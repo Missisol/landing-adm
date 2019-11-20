@@ -17,14 +17,14 @@
     <div class="nav__wrapper">
         <img src="assets/images/close.png" alt="close" class="nav__close" id="close">
         <a href="#home" class="nav__item anchor">Главная</a>
-        <a href="#about" class="nav__item anchor" id="about-item">Что такое Data Marketing</a>
+        <a href="#about" class="nav__item anchor">Что такое Data Marketing</a>
         <a href="#advantages" class="nav__item anchor">Преимущества</a>
-        <a href="#" class="nav__item">Применение</a>
-        <a href="#" class="nav__item">ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href="#examples" class="nav__item anchor">Применение</a>
+        <a href="#feedback" class="nav__item anchor">ОСТАВИТЬ ЗАЯВКУ</a>
     </div>
 </nav>
 <header class="header container header-fixed">
-    <a href="#" class="header__text">ОСТАВИТЬ ЗАЯВКУ</a>
+    <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
     <img src="assets/images/burger.png" alt="menu" class="header__menu" id="open">
 </header>
 <section class="main layout" id="home">
@@ -32,48 +32,116 @@
         <a href="#" class="header__text">ОСТАВИТЬ ЗАЯВКУ</a>
         <img src="assets/images/burger.png" alt="menu" class="header__menu">
     </header>
-    <div class="main__content container">
-        <h1 class="main__title title">
+    <div class="main__content layout__content container">
+        <h1 class="main__title layout__title">
             DATA MARKETING
         </h1>
         <div class="main__subtitle">
             почему внедрять и использовать нужно уже сейчас?
         </div>
-        <button class="main__button">УЗНАТЬ ПОДРОБНЕЕ</button>
+        <a href="#feedback" class="main__button anchor">УЗНАТЬ ПОДРОБНЕЕ</a>
     </div>
 </section>
 <section class="about layout" id="about">
     <header class="header container header__animated">
-        <a href="#" class="header__text">ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
         <img src="assets/images/burger.png" alt="menu" class="header__menu">
     </header>
-    <div class="about__content container">
-        <h1 class="about__title title">
+    <div class="about__content layout__content container">
+        <h1 class="about__title layout__title">
             DATA MARKETING
         </h1>
-        <div class="about__subtitle">
-            почему внедрять и использовать нужно уже сейчас?
+        <div class="about__text layout__text">
+            Data-маркетинг - это построение и использование инсайтов на основании анализа больших данных
+            для прогнозирования поведения пользователей и оптимизации таргетинга рекламных сообщений.
+            Это самый эффективный способ выстраивания персональной коммуникации брендов с потребителями.
+            Мы делаем так, чтобы огромные массивы данных работали на вас.
         </div>
-        <button class="about__button">УЗНАТЬ ПОДРОБНЕЕ</button>
+        <div class="layout__pagination">
+            <a href="#home" class="layout__pag-item anchor"></a>
+            <a href="#" class="layout__pag-item layout__pag-item_active anchor"></a>
+            <a href="#advantages" class="layout__pag-item anchor"></a>
+            <a href="#examples" class="layout__pag-item anchor"></a>
+            <a href="#feedback" class="layout__pag-item anchor"></a>
+        </div>
     </div>
 </section>
 <section class="advantages layout" id="advantages">
     <header class="header container header__animated">
-        <a href="#" class="header__text">ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
         <img src="assets/images/burger.png" alt="menu" class="header__menu">
     </header>
-    <div class="advantages__content container">
-        <h1 class="advantages__title title">
-            DATA MARKETING
+    <div class="advantages__content layout__content container">
+        <h1 class="advantages__title layout__title_yellow">
+            <span class="layout__capitalize">Data Marketing</span> - наши преимущества для бизнеса
         </h1>
-        <div class="advantages__subtitle">
-            почему внедрять и использовать нужно уже сейчас?
+        <div class="advantages__text layout__text">
+            Изучайте свою аудиторию: типы и стили потребляемого контента, паттерны поведения в
+            цифровом мире, досуг, объем доходов, круг общения, радости, боли и страхи.
         </div>
-        <button class="advantages__button">УЗНАТЬ ПОДРОБНЕЕ</button>
+        <div class="layout__num-wrap advantages__num-wrap">
+            <div class="layout__num-page layout__num-page_active advantages__num-page" data-id="1">1</div>
+            <div class="layout__num-page advantages__num-page" data-id="2">2</div>
+            <div class="layout__num-page advantages__num-page" data-id="3">3</div>
+            <div class="layout__num-page advantages__num-page" data-id="4">4</div>
+        </div>
+        <div class="layout__pagination">
+            <a href="#home" class="layout__pag-item anchor"></a>
+            <a href="#about" class="layout__pag-item  anchor"></a>
+            <a href="#" class="layout__pag-item layout__pag-item_active anchor"></a>
+            <a href="#examples" class="layout__pag-item anchor"></a>
+            <a href="#feedback" class="layout__pag-item anchor"></a>
+        </div>
+    </div>
+</section>
+<section class="examples layout" id="examples">
+    <header class="header container header__animated">
+        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
+        <img src="assets/images/burger.png" alt="menu" class="header__menu">
+    </header>
+    <div class="examples__content layout__content container">
+        <h1 class="examples__title layout__title_yellow">
+            <span class="layout__capitalize">Успешные</span>
+            примеры использования
+            <span class="layout__capitalize">Data-</span>маркетинг
+        </h1>
+        <div class="examples__text layout__text">
+            Изучайте свою аудиторию: типы и стили потребляемого контента, паттерны поведения в
+            цифровом мире, досуг, объем доходов, круг общения, радости, боли и страхи.
+        </div>
+        <div class="layout__num-wrap examples__name-wrap">
+            <div class="layout__name layout__name_active examples__name" data-id="1">Статистика</div>
+            <div class="layout__name examples__name" data-id="2">ЗАО Тандер</div>
+            <div class="layout__name examples__name" data-id="3">Вымпелком</div>
+            <div class="layout__name examples__name" data-id="4">PepsiCo</div>
+        </div>
+        <div class="layout__pagination">
+            <a href="#home" class="layout__pag-item anchor"></a>
+            <a href="#about" class="layout__pag-item anchor"></a>
+            <a href="#advantages" class="layout__pag-item anchor"></a>
+            <a href="#" class="layout__pag-item layout__pag-item_active anchor"></a>
+            <a href="#feedback" class="layout__pag-item anchor"></a>
+        </div>
+    </div>
+</section>
+<section class="form layout" id="feedback">
+    <header class="header container header__animated">
+        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
+        <img src="assets/images/burger.png" alt="menu" class="header__menu">
+    </header>
+    <div class="form__content layout__content container">
+        <div class="layout__pagination">
+            <a href="#home" class="layout__pag-item anchor"></a>
+            <a href="#about" class="layout__pag-item  anchor"></a>
+            <a href="#advantages" class="layout__pag-item  anchor"></a>
+            <a href="#examples" class="layout__pag-item  anchor"></a>
+            <a href="#" class="layout__pag-item layout__pag-item_active anchor"></a>
+        </div>
     </div>
 </section>
 
 <script src="js/jump.min.js"></script>
 <script src="js/main.min.js"></script>
+<script src="js/pages.min.js"></script>
 </body>
 </html>

@@ -1,5 +1,3 @@
-'use strict';
-
 // https://github.com/sitepoint-editors/smooth-scrolling, https://github.com/callmecavs/jump.js
 function jump(target, options) {
     var
@@ -30,7 +28,7 @@ function jump(target, options) {
         window.scrollTo(0, opt.easing(timeElapsed, start, distance, duration));
 
         if (timeElapsed < duration)
-            requestAnimationFrame(loop)
+            requestAnimationFrame(loop);
         else
             end();
     }
@@ -44,9 +42,9 @@ function jump(target, options) {
 
     // Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
     function easeInOutQuad(t, b, c, d) {
-        t /= d / 2
-        if (t < 1) return c / 2 * t * t + b
-        t--
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
         return -c / 2 * (t * (t - 2) - 1) + b
     }
 }

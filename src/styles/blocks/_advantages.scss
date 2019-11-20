@@ -1,0 +1,15 @@
+@use '../config' as *;
+
+.advantages {
+  padding-top: 255px;
+
+  &__title {
+    width: 70%;
+    margin: 0 auto 72px;
+  }
+
+  &__text {
+    height: 108px;
+    margin-bottom: 64px;
+  }
+}

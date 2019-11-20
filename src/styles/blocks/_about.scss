@@ -1,0 +1,9 @@
+@use '../config' as *;
+
+.about {
+  padding-top: 310px;
+
+  &__button {
+    @include button;
+  }
+}

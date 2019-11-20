@@ -28,6 +28,7 @@
 
 @mixin h2 {
   font-size: 64px;
+  line-height: 95px;
   text-transform: lowercase;
   text-align: center;
   color: v.$yellow;
@@ -41,7 +42,9 @@
   color: v.$black;
   background: v.$yellow;
   text-transform: uppercase;
+  text-align: center;
   font-size: 36px;
+  line-height: 83px;
   font-weight: 500;
   border-radius: 5px;
   border: 1px solid v.$yellow;

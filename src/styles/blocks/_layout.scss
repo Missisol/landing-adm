@@ -21,10 +21,85 @@
   @include phone {
     background: $green;
   }
-}
 
-.title {
-  @include h1;
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    @include h1;
+    margin-bottom: 72px;
+
+    &_yellow {
+      @include h2;
+    }
+  }
+
+  &__capitalize {
+  text-transform: capitalize;
+  }
+
+  &__text {
+    width: 65%;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  &__num-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__num-page,
+  &__name {
+    position: relative;
+    text-align: center;
+    font-size: 48px;
+    line-height: 72px;
+    cursor: pointer;
+    margin: 0 13px;
+
+    &:after {
+      position: absolute;
+      bottom: -10px;
+      display: block;
+      content: '';
+      height: 2px;
+      width: 0%;
+      background-color: $white;
+      transition: width .3s ease-in-out;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+  }
+
+  &__num-page {
+    width: 50px;
+  }
+
+  &__pagination {
+    position: absolute;
+    right: 0;
+    top: 80px;
+  }
+
+  &__pag-item {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: $dark-grey;
+    margin-bottom: 26px;
+
+    &_active {
+      background: $grey;
+    }
+  }
+
 }
 
 @supports ((-webkit-text-stroke-color: $yellow)
@@ -34,7 +109,7 @@
   ((-moz-text-stroke-color: $yellow)
   and
   (-moz-text-fill-color: $green)) {
-  .title {
+  .layout__title {
     -moz-text-fill-color: $green;
     -webkit-text-fill-color: $green;
     -moz-text-stroke-color: $yellow;
@@ -51,7 +126,84 @@
  ((-moz-text-stroke-color: $yellow)
   and
   (-moz-text-fill-color: $green))) {
-  .title {
+  .layout__title {
     color: $yellow;
+  }
+}
+
+@supports ((-webkit-text-stroke-color: $yellow)
+  and
+  (-webkit-text-fill-color: $green))
+  or
+  ((-moz-text-stroke-color: $yellow)
+  and
+  (-moz-text-fill-color: $green)) {
+  .layout__num-page {
+    -moz-text-fill-color: $green;
+    -webkit-text-fill-color: $green;
+    -moz-text-stroke-color: $yellow;
+    -webkit-text-stroke-color: $yellow;
+    -moz-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 2px;
+  }
+}
+
+@supports not (((-webkit-text-stroke-color: $yellow)
+  and
+  (-webkit-text-fill-color: $green))
+  or
+ ((-moz-text-stroke-color: $yellow)
+  and
+  (-moz-text-fill-color: $green))) {
+  .layout__num-page {
+    color: $yellow;
+  }
+}
+
+@supports ((-webkit-text-stroke-color: $yellow)
+  and
+  (-webkit-text-fill-color: $yellow))
+  or
+  ((-moz-text-stroke-color: $yellow)
+  and
+  (-moz-text-fill-color: $yellow)) {
+  .layout__num-page_active {
+    -moz-text-fill-color: $yellow;
+    -webkit-text-fill-color: $yellow;
+    -moz-text-stroke-color: $yellow;
+    -webkit-text-stroke-color: $yellow;
+    -moz-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 2px;
+  }
+}
+
+@supports not (((-webkit-text-stroke-color: $yellow)
+  and
+  (-webkit-text-fill-color: $yellow))
+  or
+ ((-moz-text-stroke-color: $yellow)
+  and
+  (-moz-text-fill-color: $yellow))) {
+  .layout__num-page_active {
+    color: $yellow;
+  }
+}
+
+
+@keyframes open-rotate {
+  0% {
+    transform: perspective(0) rotateY(0);
+  }
+  100% {
+    transform: perspective(900px) rotateY(13deg);
+  }
+}
+
+@keyframes close-rotate {
+  0% {
+    transform: perspective(900px) rotateY(13deg);
+  }
+  100% {
+    transform: perspective(0) rotateY(0);
   }
 }

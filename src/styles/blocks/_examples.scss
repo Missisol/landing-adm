@@ -1,0 +1,27 @@
+@use '../config' as *;
+
+.examples {
+  padding-top: 151px;
+
+  &__title {
+    width: 80%;
+    margin: 0 auto 72px;
+  }
+
+  &__text {
+    height: 240px;
+    margin-bottom: 108px;
+  }
+
+  &__name-wrap {
+    width: 100%;
+  }
+
+  &__name {
+    color: $yellow;
+    font-size: 36px;
+    line-height: 53px;
+    letter-spacing: 0.1em;
+  }
+}
+

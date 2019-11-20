@@ -7,18 +7,22 @@ const anchors = document.querySelectorAll('.anchor');
 
 function openElem(elem) {
     const headerAnimate = elem.querySelector('.header__animated');
-    header.style.display = 'none';
-    headerAnimate.style.display = 'flex';
-    elem.style.animation = 'open-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
+    if (headerAnimate.style.display !== 'flex') {
+        header.style.display = 'none';
+        headerAnimate.style.display = 'flex';
+        elem.style.animation = 'open-rotate .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
+    }
 }
 
 function closeElem(elem) {
     const headerAnimate = elem.querySelector('.header__animated');
-    elem.style.animation = 'close-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
-    setTimeout(() => {
-        header.style.display = 'flex';
-        headerAnimate.style.display = 'none';
-    }, 1000)
+    if (headerAnimate.style.display === 'flex') {
+        elem.style.animation = 'close-rotate .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
+        setTimeout(() => {
+            header.style.display = 'flex';
+            headerAnimate.style.display = 'none';
+        }, 500)
+    }
 }
 
 function isVisible(elem) {
@@ -29,7 +33,6 @@ function isVisible(elem) {
 
 function getElem(str) {
     const elems = document.querySelectorAll('.layout');
-
     for (let elem of elems) {
         if (isVisible(elem) && str === 'open') {
             openElem(elem);
@@ -40,7 +43,7 @@ function getElem(str) {
 }
 
 function initSmoothScrolling(id) {
-    const duration = 500;
+    const duration = 400;
     jump(`${id}`, {
         duration: duration,
         callback: function () {
@@ -59,7 +62,7 @@ for (let anchor of anchors) {
             setTimeout(() => {
                 initSmoothScrolling(id);
                 document.body.style.overflowY = 'hidden';
-            }, 1500)
+            }, 1000)
         }
     })
 }

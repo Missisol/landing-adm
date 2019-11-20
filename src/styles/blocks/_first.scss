@@ -1,25 +1,10 @@
 @use '../config' as *;
 
 .main {
-  position: relative;
-  //z-index: 10;
   padding-top: 224px;
-  transform-origin: left;
-
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__title {
-    margin-bottom: 72px;
-  }
 
   &__subtitle {
     @include h2;
-    line-height: 95px;
     width: 70%;
     margin: 0 auto 116px;
   }
@@ -27,23 +12,5 @@
   &__button {
     @include button;
   }
-
 }
 
-@keyframes open-rotate {
-  0% {
-    transform: perspective(0) rotateY(0);
-  }
-  100% {
-    transform: perspective(900px) rotateY(13deg);
-  }
-}
-
-@keyframes close-rotate {
-  0% {
-    transform: perspective(900px) rotateY(13deg);
-  }
-  100% {
-    transform: perspective(0) rotateY(0);
-  }
-}
