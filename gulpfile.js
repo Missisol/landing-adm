@@ -76,7 +76,7 @@ function scripts() {
             presets: ['@babel/env']
         }))
         .pipe(gulpIf(!isDevelopment, minifyJS()))
-        .pipe(concat('bundle.js'))
+        // .pipe(concat('bundle.js'))
         .pipe(gulpIf(isDevelopment, sourcemaps.write()))
         .pipe(rename({
             suffix: '.min'

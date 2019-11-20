@@ -9,6 +9,10 @@ body {
   color: v.$white;
 }
 
+body {
+  overflow: hidden;
+}
+
 .wrapper {
   position: relative;
 }
