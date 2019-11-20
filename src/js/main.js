@@ -83,6 +83,7 @@ function elmYPosition(eID) {
         node = node.offsetParent;
         y += node.offsetTop;
     }
+    console.log(y);
     return y;
 }
 
@@ -127,11 +128,8 @@ const anchors = document.querySelectorAll('.anchor');
 for (let anchor of anchors) {
     anchor.addEventListener('click', (e) => {
         e.preventDefault();
-
         const target = e.target;
         const id = target.getAttribute('href');
-        console.log('target', target,);
-
         if (id !== '#') {
             enableScroll();
             setTimeout(() => {
@@ -146,3 +144,5 @@ for (let anchor of anchors) {
 window.onload = function () {
     init();
 };
+
+
