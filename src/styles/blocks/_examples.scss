@@ -1,7 +1,6 @@
 @use '../config' as *;
 
 .examples {
-  //padding-top: 151px;
 
   &__title {
     width: 80%;
@@ -10,7 +9,7 @@
 
   &__statistics {
     height: 290px;
-    margin-bottom: 58px;
+    margin: 0 100px 58px;
   }
 
   &__items-wrap {
@@ -37,7 +36,7 @@
   }
 
   &__name-wrap {
-    width: 100%;
+    width: 1090px;
   }
 
   &__name {

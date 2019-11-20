@@ -9,7 +9,20 @@
   z-index: 20;
   left: calc((100vw - 1290px) / 2);
   width: 100%;
+  height: 112px;
   padding: 72px 0 0;
+
+  &__logo-wrap {
+    display: none;
+  }
+
+  &__logo {
+    margin-right: 8px;
+  }
+
+  &__logo-text {
+    color: $white;
+  }
 
   &__text {
     color: $white;

@@ -47,7 +47,7 @@ function initSmoothScrolling(id) {
     jump(`${id}`, {
         duration: duration,
         callback: function () {
-            //
+            checkVisibilityFeedbackSection();
         }
     });
 }
@@ -62,9 +62,24 @@ for (let anchor of anchors) {
             setTimeout(() => {
                 initSmoothScrolling(id);
                 document.body.style.overflowY = 'hidden';
-            }, 1000)
+            }, 1000);
         }
     })
+}
+
+function checkVisibilityFeedbackSection() {
+    const feedback = document.querySelector('.feedback');
+    const logo = document.querySelector('.header__logo-wrap');
+    const text = document.querySelector('.header__text');
+    if (!!isVisible(feedback)) {
+        text.style.display !== 'none' ? text.style.display = 'none' : null;
+        logo.style.display !== 'flex' ? logo.style.display = 'flex' : null;
+        console.log('yes');
+    } else {
+        text.style.display !== 'block' ? text.style.display = 'block' : null;
+        logo.style.display !== 'none' ? logo.style.display = 'none' : null;
+        console.log('no');
+    }
 }
 
 function init() {
@@ -79,6 +94,7 @@ function init() {
 
 window.onload = function () {
     init();
+    checkVisibilityFeedbackSection();
 };
 
 

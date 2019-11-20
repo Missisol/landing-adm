@@ -24,6 +24,12 @@
     </div>
 </nav>
 <header class="header container header-fixed">
+    <a href="#" class="header__logo-wrap">
+        <img class="header__logo" src="assets/images/logo.svg" alt="logo">
+        <div class="header__logo-text">
+            Amberlight, digital-студия
+        </div>
+    </a>
     <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
     <img src="assets/images/burger.png" alt="menu" class="header__menu" id="open">
 </header>
@@ -129,7 +135,8 @@
                 <img class="examples__item-image" src="assets/images/one-path.svg" alt="">
                 <div class="examples__item-text">
                     59% маркетологов утверждают, что процесс принятия решений значительно ускорился.
-                    <a class="examples__item-link" href="https://maddata.agency/whats-new/data-driven-marketing-chto-v-trende">Источник</a>
+                    <a class="examples__item-link"
+                       href="https://maddata.agency/whats-new/data-driven-marketing-chto-v-trende">Источник</a>
                 </div>
             </div>
         </div>
@@ -149,12 +156,52 @@
         </div>
     </div>
 </section>
-<section class="form layout" id="feedback">
+<section class="feedback layout" id="feedback">
     <header class="header container header__animated">
-        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href="#" class="feedback__logo-wrap">
+            <img class="feedback__logo" src="assets/images/logo.svg" alt="logo">
+            <div class="feedback__logo-text">Amberlight, digital-студия</div>
+        </a>
         <img src="assets/images/burger.png" alt="menu" class="header__menu">
     </header>
-    <div class="form__content layout__content container">
+    <div class="feedback__content layout__content container">
+        <h1 class="feedback__title">
+            Оставьте нам свои контактные данные, мы обязательно свяжемся с вами
+        </h1>
+        <form method="post" class="feedback__form">
+            <label class="feedback__label feedback__label_name">
+                <input
+                        type="text" class="feedback__input feedback__input_name"
+                        autocomplete="off" placeholder="Как к вам обращаться?"
+                >
+            </label>
+            <label class="feedback__label feedback__label_num">
+                <input
+                        type="text" class="feedback__input feedback__input_num"
+                        autocomplete="off" placeholder="e-mail"
+                >
+            </label>
+            <label class="feedback__label feedback__label_num">
+                <input
+                        type="text" class="feedback__input feedback__input_num"
+                        autocomplete="off" placeholder="Номер телефона"
+                >
+            </label>
+            <label class="feedback__textarea-label">
+                Сфера вашего бизнеса и примерный объем вашей аудитории
+                <textarea name="" class="feedback__textarea"></textarea>
+            </label>
+            <input id="checkbox" type="checkbox" class="feedback__checkbox">
+            <label class="feedback__label-checkbox" for="checkbox">
+                <span class="feedback__checkbox-text">Хочу получить спецпредложение для малого бизнеса</span>
+            </label>
+            <button type="submit" class="feedback__button">ОСТАВИТЬ ЗАЯВКУ</button>
+            <div class="feedback__policy">
+                * Нажимая на кнопку “Отправить заявку”, вы соглашаетесь с
+                <a href="#" class="feedback__policy-link"> Политикой конфиденциальности</a>
+                и даете свое согласие на обработку персональных данных
+            </div>
+        </form>
         <div class="layout__pagination">
             <a href="#home" class="layout__pag-item anchor"></a>
             <a href="#about" class="layout__pag-item  anchor"></a>
@@ -168,5 +215,6 @@
 <script src="js/jump.min.js"></script>
 <script src="js/main.min.js"></script>
 <script src="js/pages.min.js"></script>
+<script src="js/form.min.js"></script>
 </body>
 </html>
