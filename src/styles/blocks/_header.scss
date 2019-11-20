@@ -1,0 +1,28 @@
+@use '../config' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  left: calc((100vw - 1290px) / 2);
+  width: 100%;
+  padding: 72px 0 0;
+
+  &__text {
+    color: $white;
+  }
+
+  &__menu {
+    width: 110px;
+    height: 27px;
+    cursor: pointer;
+  }
+
+  &__animated {
+    display: none;
+  }
+}
+

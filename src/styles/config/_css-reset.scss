@@ -5,13 +5,7 @@
   box-sizing: border-box;
 }
 
-/* Remove default padding */
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
-/* Remove default margin */
+/* Remove default margin and padding */
 body,
 h1,
 h2,
@@ -25,8 +19,10 @@ figure,
 figcaption,
 blockquote,
 dl,
-dd {
+dd,
+button {
   margin: 0;
+  padding: 0;
 }
 
 /* Set core body defaults */

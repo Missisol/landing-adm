@@ -1,0 +1,57 @@
+@use '../config' as *;
+
+.layout {
+  position: relative;
+  z-index: 10;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: left;
+
+  @include desktop {
+    background: url('../../assets/images/bcg.jpg') no-repeat;
+    background-size: cover;
+  }
+
+  @include tablet {
+    background: $green;
+  }
+
+  @include phone {
+    background: $green;
+  }
+}
+
+.title {
+  @include h1;
+}
+
+@supports ((-webkit-text-stroke-color: $yellow)
+  and
+  (-webkit-text-fill-color: $green))
+  or
+  ((-moz-text-stroke-color: $yellow)
+  and
+  (-moz-text-fill-color: $green)) {
+  .title {
+    -moz-text-fill-color: $green;
+    -webkit-text-fill-color: $green;
+    -moz-text-stroke-color: $yellow;
+    -webkit-text-stroke-color: $yellow;
+    -moz-text-stroke-width: 4px;
+    -webkit-text-stroke-width: 4px;
+  }
+}
+
+@supports not (((-webkit-text-stroke-color: $yellow)
+  and
+  (-webkit-text-fill-color: $green))
+  or
+ ((-moz-text-stroke-color: $yellow)
+  and
+  (-moz-text-fill-color: $green))) {
+  .title {
+    color: $yellow;
+  }
+}
