@@ -1,16 +1,39 @@
 @use '../config' as *;
 
 .examples {
-  padding-top: 151px;
+  //padding-top: 151px;
 
   &__title {
     width: 80%;
     margin: 0 auto 72px;
   }
 
+  &__statistics {
+    height: 290px;
+    margin-bottom: 58px;
+  }
+
+  &__items-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__item-image {
+    width: 264px;
+    height: 8px;
+    margin-right: 24px;
+  }
+
+  &__item-link {
+    color: $white;
+    text-decoration: underline !important;
+  }
+
   &__text {
     height: 240px;
     margin-bottom: 108px;
+    display: none;
   }
 
   &__name-wrap {
@@ -24,4 +47,5 @@
     letter-spacing: 0.1em;
   }
 }
+
 

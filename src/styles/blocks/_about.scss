@@ -1,7 +1,11 @@
 @use '../config' as *;
 
 .about {
-  padding-top: 310px;
+  //padding-top: 310px;
+
+  &__title {
+    padding-top: 160px;
+  }
 
   &__button {
     @include button;

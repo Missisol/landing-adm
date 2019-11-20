@@ -1,11 +1,12 @@
 @use '../config' as *;
 
 .advantages {
-  padding-top: 255px;
+  //padding-top: 255px;
 
   &__title {
     width: 70%;
     margin: 0 auto 72px;
+    padding-top: 105px;
   }
 
   &__text {

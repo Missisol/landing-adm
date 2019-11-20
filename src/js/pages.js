@@ -46,10 +46,25 @@ const examplesTexts = [
     },
 ];
 
+function toggleExamplesView(elem) {
+    const statistic = document.querySelector('.examples__statistics');
+    const textBlock = document.querySelector('.examples__text');
+    console.log(elem);
+
+    if (elem.dataset.id === '1') {
+        textBlock.style.display = 'none';
+        statistic.style.display = 'block';
+    } else {
+        statistic.style.display = 'none';
+        textBlock.style.display = 'block';
+    }
+}
+
 function activateMenuItem(items, target, selector) {
     for (let item of items) {
         if (!item.classList.contains(selector) && item === target) {
             item.classList.add(selector);
+            selector === 'layout__name_active' ? toggleExamplesView(item) : null;
         } else {
             item.classList.remove(selector);
         }
