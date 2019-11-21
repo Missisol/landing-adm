@@ -4,12 +4,14 @@ const open = document.querySelector('#open');
 const close = document.querySelector('#close');
 const header = document.querySelector('.header-fixed');
 const anchors = document.querySelectorAll('.anchor');
+const pagination = document.querySelector('.pagination__wrap');
 
 function openElem(elem) {
     const headerAnimate = elem.querySelector('.header__animated');
     if (headerAnimate.style.display !== 'flex') {
         header.style.display = 'none';
         headerAnimate.style.display = 'flex';
+        pagination.style.opacity = '0';
         elem.style.animation = 'open-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
     }
 }
@@ -53,7 +55,7 @@ for (let anchor of anchors) {
     })
 }
 
-function checkVisibilityFeedbackSection() {
+function checkVisibilityFeedbackPage() {
     const feedback = document.querySelector('.feedback');
     const logo = document.querySelector('.header__logo-wrap');
     const text = document.querySelector('.header__text');
@@ -63,6 +65,31 @@ function checkVisibilityFeedbackSection() {
     } else {
         text.style.display !== 'block' ? text.style.display = 'block' : null;
         logo.style.display !== 'none' ? logo.style.display = 'none' : null;
+    }
+}
+
+function checkVisibilityHomePage() {
+    const home = document.querySelector('#home');
+    !!isVisible(home) ? pagination.style.opacity = '0' :
+        pagination.style.opacity = '1';
+}
+
+function checkVisibilityPages(link) {
+    const elem = document.querySelector(link);
+    const linkElems = document.querySelectorAll('.pagination__pag-item');
+
+    for (let linkElem of linkElems) {
+        const elemHref = linkElem.getAttribute('href');
+        if (elemHref === link && !!isVisible(elem)) {
+            if (link !== '#home') {
+                linkElem.classList.add('pagination__pag-item_active');
+                pagination.style.opacity = '1';
+            } else {
+                pagination.style.opacity = '0';
+            }
+        } else {
+            linkElem.classList.remove('pagination__pag-item_active');
+        }
     }
 }
 
@@ -79,15 +106,14 @@ function init() {
 function initSmoothScrolling() {
     $('.anchor').on('click', e => {
         e.preventDefault();
-
         const link = $(e.target).attr('href');
-
         let top = $(link).offset().top;
         setTimeout(() => {
             $('body, html').animate({
                 scrollTop: top
             }, 1000, function () {
-                checkVisibilityFeedbackSection();
+                checkVisibilityFeedbackPage();
+                checkVisibilityPages(link);
             });
         }, 1000)
     })
@@ -96,7 +122,9 @@ function initSmoothScrolling() {
 window.onload = function () {
     init();
     initSmoothScrolling();
-    checkVisibilityFeedbackSection();
+    checkVisibilityFeedbackPage();
+    checkVisibilityHomePage();
 };
+
 
 

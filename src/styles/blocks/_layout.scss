@@ -96,25 +96,6 @@
   &__num-page {
     width: 50px;
   }
-
-  &__pagination {
-    position: absolute;
-    right: 0;
-    top: 240px;
-  }
-
-  &__pag-item {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: $dark-grey;
-    margin-bottom: 26px;
-
-    &_active {
-      background: $grey;
-    }
-  }
-
 }
 
 @supports ((-webkit-text-stroke-color: $yellow)

@@ -39,3 +39,24 @@
   }
 }
 
+.pagination {
+
+  &__wrap {
+    position: absolute;
+    z-index: 20;
+    right: 0;
+    top: 370px;
+  }
+
+  &__pag-item {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: $dark-grey;
+    margin-bottom: 26px;
+
+    &_active {
+      background: $grey;
+    }
+  }
+}
