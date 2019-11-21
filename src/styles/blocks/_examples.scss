@@ -18,10 +18,9 @@
     margin-bottom: 24px;
   }
 
-  &__item-image {
-    width: 264px;
+  &__item-path {
+    width: 300px;
     height: 8px;
-    margin-right: 24px;
   }
 
   &__item-link {
@@ -44,6 +43,163 @@
     font-size: 36px;
     line-height: 53px;
     letter-spacing: 0.1em;
+  }
+
+  &__line-wrap {
+    position: relative;
+    min-width: 300px;
+    margin-right: 24px;
+  }
+
+  &__round-wrap {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+
+    &_one {
+      animation: slider-one 1s linear both;
+    }
+
+    &_two {
+      animation: slider-two 1s linear both;
+    }
+
+    &_three {
+      animation: slider-three 1s linear both;
+    }
+
+    &_four {
+      animation: slider-four 1s linear both;
+    }
+  }
+
+  &__round {
+    position: absolute;
+    border-radius: 50%;
+
+    &_one {
+      top: -3px;
+      left: -7px;
+      width: 14px;
+      height: 14px;
+      background: $yellow;
+    }
+
+    &_two {
+      top: -6px;
+      left: -10px;
+      width: 20px;
+      height: 20px;
+      background: $white;
+      mix-blend-mode: soft-light;
+    }
+
+    &_three {
+      top: -10px;
+      left: -14px;
+      width: 28px;
+      height: 28px;
+      background: $white;
+      mix-blend-mode: overlay;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    top: 1px;
+    height: 6px;
+    border-radius: 29px;
+    background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #EFBB69;;
+
+    &_one {
+      animation: increase-one 1s linear both;
+    }
+
+    &_two {
+      animation: increase-two 1s linear both;
+    }
+
+    &_three {
+      animation: increase-three 1s linear both;
+    }
+
+    &_four {
+      animation: increase-four 1s linear both;
+    }
+  }
+}
+
+
+@keyframes increase-one {
+  0% {
+    width: 1px;
+  }
+  100% {
+    width: 264px;
+  }
+}
+
+@keyframes increase-two {
+  0% {
+    width: 1px;
+  }
+  100% {
+    width: 159px;
+  }
+}
+
+@keyframes increase-three {
+  0% {
+    width: 1px;
+  }
+  100% {
+    width: 219px;
+  }
+}
+
+@keyframes increase-four {
+  0% {
+    width: 1px;
+  }
+  100% {
+    width: 177px;
+  }
+}
+
+
+@keyframes slider-one {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 264px;
+  }
+}
+
+@keyframes slider-two {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 159px;
+  }
+}
+
+@keyframes slider-three {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 219px;
+  }
+}
+
+@keyframes slider-four {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 177px;
   }
 }
 

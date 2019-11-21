@@ -10,18 +10,18 @@ function openElem(elem) {
     if (headerAnimate.style.display !== 'flex') {
         header.style.display = 'none';
         headerAnimate.style.display = 'flex';
-        elem.style.animation = 'open-rotate .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
+        elem.style.animation = 'open-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
     }
 }
 
 function closeElem(elem) {
     const headerAnimate = elem.querySelector('.header__animated');
     if (headerAnimate.style.display === 'flex') {
-        elem.style.animation = 'close-rotate .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
+        elem.style.animation = 'close-rotate .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
         setTimeout(() => {
             header.style.display = 'flex';
             headerAnimate.style.display = 'none';
-        }, 500)
+        }, 600)
     }
 }
 
@@ -98,3 +98,18 @@ window.onload = function () {
 };
 
 
+const path = document.querySelector('.myPath');
+const length = path.getTotalLength();
+path.style.transition = path.style.WebkitTransition =
+    'none';
+// Set up the starting positions
+path.style.strokeDasharray = length + ' ' + length;
+path.style.strokeDashoffset = length;
+// Trigger a layout so styles are calculated & the browser
+// picks up the starting position before animating
+path.getBoundingClientRect();
+// Define our transition
+path.style.transition = path.style.WebkitTransition =
+    'stroke-dashoffset 2s ease-in-out';
+// Go!
+path.style.strokeDashoffset = '0';

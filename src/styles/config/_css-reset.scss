@@ -63,6 +63,12 @@ select {
   font: inherit;
 }
 
+input,
+textarea,
+select {
+  outline: none;
+}
+
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
