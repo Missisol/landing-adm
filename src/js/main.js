@@ -42,16 +42,6 @@ function getElem(str) {
     }
 }
 
-function initSmoothScrolling(id) {
-    const duration = 400;
-    jump(`${id}`, {
-        duration: duration,
-        callback: function () {
-            checkVisibilityFeedbackSection();
-        }
-    });
-}
-
 for (let anchor of anchors) {
     anchor.addEventListener('click', (e) => {
         e.preventDefault();
@@ -86,8 +76,26 @@ function init() {
     });
 }
 
+function initSmoothScrolling() {
+    $('.anchor').on('click', e => {
+        e.preventDefault();
+
+        const link = $(e.target).attr('href');
+
+        let top = $(link).offset().top;
+        setTimeout(() => {
+            $('body, html').animate({
+                scrollTop: top
+            }, 1000, function () {
+                checkVisibilityFeedbackSection();
+            });
+        }, 1000)
+    })
+}
+
 window.onload = function () {
     init();
+    initSmoothScrolling();
     checkVisibilityFeedbackSection();
 };
 

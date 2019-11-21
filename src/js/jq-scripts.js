@@ -41,17 +41,5 @@
             offset: 220
         });
 
-        // Smooth scrolling
-        $('.anchor').on('click', e => {
-            e.preventDefault();
-
-            const link = $(e.target).attr('href');
-
-            let top = $(link).offset().top;
-            setTimeout(() => {
-                $('body, html').animate({scrollTop: top}, 1000);
-            }, 1000)
-        })
-
     });
 })(jQuery);
