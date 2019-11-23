@@ -2,6 +2,10 @@
 
 .feedback {
 
+  @include phone {
+    height: 100%;
+  }
+
   &__logo-wrap {
     display: flex !important;
   }
@@ -15,18 +19,44 @@
   }
 
   &__title {
-    padding-top: 22px;
-    margin-bottom: 64px;
     text-align: center;
-    width: 1290px;
+
+    @include desktop {
+      padding-top: 172px;
+      margin-bottom: 64px;
+      width: 1290px;
+    }
+
+    @include tablet-l {
+      padding-top: 120px;
+      font-size: 32px;
+      line-height: 48px;
+    }
+
+    @include tablet-l {
+      padding-top: 120px;
+      font-size: 32px;
+      line-height: 48px;
+    }
+
+    @include phone {
+      font-size: 16px;
+      line-height: 24px;
+      padding-top: 75px;
+    }
   }
 
   &__form {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 695px;
     font-weight: 300;
+
+    @include phone {
+      width: 282px;
+    }
   }
 
   &__input,
@@ -39,10 +69,6 @@
     border: none;
   }
 
-  &__textarea {
-    padding: 0 10px;
-  }
-
   &__checkbox {
     display: none;
   }
@@ -53,8 +79,13 @@
     &_name {
       width: 100%;
     }
+
     &_num {
       width: 325px;
+
+      @include phone {
+        width: 100%;
+      }
     }
   }
 
@@ -65,24 +96,58 @@
   &__label {
     border-bottom: 2px solid $white;
     margin-bottom: 32px;
+
+    @include tablet-l {
+      margin-bottom: 20px;
+    }
+
+    @include tablet {
+      margin-bottom: 20px;
+    }
+
+    @include phone {
+      font-size: 16px;
+      line-height: 27px;
+    }
   }
 
   &__textarea-label,
   &__textarea,
   &__label-checkbox {
     width: 100%;
+
+    @include phone {
+      font-size: 16px;
+      line-height: 27px;
+    }
   }
 
   &__textarea {
     height: 119px;
     border: 2px solid $white;
     margin-bottom: 22px;
+    padding: 0 10px;
+
+    @include tablet-l {
+      height: 57px;
+    }
+
+    @include tablet {
+      height: 57px;
+    }
+    @include phone {
+      height: 57px;
+    }
   }
 
   &__label-checkbox {
     position: relative;
     display: inline-block;
     margin: 0 0 56px;
+
+    @include phone {
+      line-height: 32px;
+    }
   }
 
   &__label-checkbox:before {
@@ -99,8 +164,16 @@
   }
 
   &__button {
-    @include button;
+    @include button($phone: false);
     margin: 0 auto 32px;
+
+    @include tablet-l {
+      @include button($phone: true);
+    }
+
+    @include phone {
+      @include button($phone: true)
+    }
   }
 
   &__policy {
@@ -109,12 +182,65 @@
     text-align: center;
     font-size: 14px;
     line-height: 21px;
+    user-select: none;
   }
 
   &__policy-link {
     display: inline-block !important;
     color: $white;
     text-decoration: underline !important;
+  }
+
+  &__error {
+    position: absolute;
+    z-index: 20;
+    font-size: 16px;
+    line-height: 24px;
+    color: $red;
+  }
+
+  &__field-name {
+    top: 39px;
+    left: 0;
+
+    @include phone {
+      top: 29px;
+    }
+  }
+
+  &__field-email {
+    top: 111px;
+    left: 0;
+
+    @include tablet-l {
+      top: 99px;
+    }
+
+    @include tablet {
+      top: 99px;
+    }
+
+    @include phone {
+      top: 92px;
+    }
+  }
+
+  &__field-phone {
+    top: 111px;
+    left: 371px;
+
+    @include tablet-l {
+      top: 99px;
+    }
+
+    @include tablet {
+      top: 99px;
+    }
+
+    @include phone {
+      left: 0;
+      top: 155px;
+    }
   }
 }
 
@@ -126,3 +252,4 @@
   padding-left: 6px;
   color: $white;
 }
+

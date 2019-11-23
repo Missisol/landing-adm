@@ -25,8 +25,12 @@ body {
     max-width: v.$desktop-container;
   }
 
+  @include m.tablet-l() {
+  max-width: 86%;
+}
+
   @include m.tablet() {
-    max-width: 80%;
+    max-width: 90%;
   }
 
   @include m.phone() {

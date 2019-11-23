@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width initial-scale=1 maximum-scale=1.0 user-scalable=0">
     <meta property="og:title" content="AMBERLIGHT digital studio">
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://amberlight.io/">
@@ -23,28 +23,32 @@
         <a href="#feedback" class="nav__item anchor">ОСТАВИТЬ ЗАЯВКУ</a>
     </div>
 </nav>
-<header class="header container header-fixed">
-    <a href="http://amberlight.io/" class="header__logo-wrap">
-        <img class="header__logo" src="assets/images/logo.svg" alt="logo">
-        <div class="header__logo-text">
-            Amberlight, digital-студия
+<div class="header-wrap">
+    <header class="header header__fixed container">
+        <a href="http://amberlight.io/" class="header__logo-wrap" target="_blank">
+            <img class="header__logo" src="assets/images/logo.svg" alt="logo">
+            <div class="header__logo-text">
+                Amberlight, digital-студия
+            </div>
+        </a>
+        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
+        <img src="assets/images/burger.png" alt="menu" class="header__menu" id="open">
+        <div class="pagination__wrap">
+            <a href="#home" class="pagination__pag-item anchor"></a>
+            <a href="#about" class="pagination__pag-item anchor"></a>
+            <a href="#advantages" class="pagination__pag-item anchor"></a>
+            <a href="#examples" class="pagination__pag-item anchor"></a>
+            <a href="#feedback" class="pagination__pag-item anchor"></a>
         </div>
-    </a>
-    <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
-    <img src="assets/images/burger.png" alt="menu" class="header__menu" id="open">
-    <div class="pagination__wrap">
-        <a href="#home" class="pagination__pag-item anchor"></a>
-        <a href="#about" class="pagination__pag-item anchor"></a>
-        <a href="#advantages" class="pagination__pag-item anchor"></a>
-        <a href="#examples" class="pagination__pag-item anchor"></a>
-        <a href="#feedback" class="pagination__pag-item anchor"></a>
-    </div>
-</header>
-<section class="main layout" id="home">
-    <header class="header container header__animated">
-        <a href="#" class="header__text">ОСТАВИТЬ ЗАЯВКУ</a>
-        <img src="assets/images/burger.png" alt="menu" class="header__menu">
     </header>
+</div>
+<section class="main layout" id="home" data-id="1">
+    <div class="header-wrap">
+        <header class="header container header__animated">
+            <a href="#" class="header__text">ОСТАВИТЬ ЗАЯВКУ</a>
+            <img src="assets/images/burger.png" alt="menu" class="header__menu">
+        </header>
+    </div>
     <div class="main__content layout__content container">
         <h1 class="main__title layout__title">
             DATA MARKETING
@@ -55,11 +59,13 @@
         <a href="#about" class="main__button anchor">УЗНАТЬ ПОДРОБНЕЕ</a>
     </div>
 </section>
-<section class="about layout" id="about">
-    <header class="header container header__animated">
-        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
-        <img src="assets/images/burger.png" alt="menu" class="header__menu">
-    </header>
+<section class="about layout" id="about" data-id="2">
+    <div class="header-wrap">
+        <header class="header container header__animated">
+            <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
+            <img src="assets/images/burger.png" alt="menu" class="header__menu">
+        </header>
+    </div>
     <div class="about__content layout__content container">
         <h1 class="about__title layout__title">
             DATA MARKETING
@@ -72,11 +78,13 @@
         </div>
     </div>
 </section>
-<section class="advantages layout" id="advantages">
-    <header class="header container header__animated">
-        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
-        <img src="assets/images/burger.png" alt="menu" class="header__menu">
-    </header>
+<section class="advantages layout" id="advantages" data-id="3">
+    <div class="header-wrap">
+        <header class="header container header__animated">
+            <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
+            <img src="assets/images/burger.png" alt="menu" class="header__menu">
+        </header>
+    </div>
     <div class="advantages__content layout__content container">
         <h1 class="advantages__title layout__title_yellow">
             <span class="layout__capitalize">Data Marketing</span> - наши преимущества для бизнеса
@@ -93,16 +101,18 @@
         </div>
     </div>
 </section>
-<section class="examples layout" id="examples">
-    <header class="header container header__animated">
-        <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
-        <img src="assets/images/burger.png" alt="menu" class="header__menu">
-    </header>
+<section class="examples layout" id="examples" data-id="4">
+    <div class="header-wrap">
+        <header class="header container header__animated">
+            <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
+            <img src="assets/images/burger.png" alt="menu" class="header__menu">
+        </header>
+    </div>
     <div class="examples__content layout__content container">
         <h1 class="examples__title layout__title_yellow">
             <span class="layout__capitalize">Успешные</span>
             примеры использования
-            <span class="layout__capitalize">Data-</span>маркетинг
+            <span class="layout__capitalize">Data-</span>маркетинга
         </h1>
         <div class="examples__statistics">
             <div class="examples__items-wrap">
@@ -174,46 +184,57 @@
         </div>
     </div>
 </section>
-<section class="feedback layout" id="feedback">
-    <header class="header container header__animated">
-        <a href="http://amberlight.io/" class="feedback__logo-wrap">
-            <img class="feedback__logo" src="assets/images/logo.svg" alt="logo">
-            <div class="feedback__logo-text">Amberlight, digital-студия</div>
-        </a>
-        <img src="assets/images/burger.png" alt="menu" class="header__menu">
-    </header>
+<section class="feedback layout" id="feedback" data-id="5">
+    <div class="header-wrap">
+        <header class="header container header__animated">
+            <a href="http://amberlight.io/" class="feedback__logo-wrap" target="_blank">
+                <img class="feedback__logo" src="assets/images/logo.svg" alt="logo">
+                <div class="feedback__logo-text">Amberlight, digital-студия</div>
+            </a>
+            <img src="assets/images/burger.png" alt="menu" class="header__menu">
+        </header>
+    </div>
     <div class="feedback__content layout__content container">
         <h1 class="feedback__title">
             Оставьте нам свои контактные данные, мы обязательно свяжемся с вами
         </h1>
-        <form method="post" class="feedback__form">
-            <label class="feedback__label feedback__label_name">
+        <form class="feedback__form">
+            <label class="feedback__label feedback__label_name name-label">
                 <input
+                        name="name" maxlength="30"
                         type="text" class="feedback__input feedback__input_name"
                         autocomplete="off" placeholder="Как к вам обращаться?"
                 >
             </label>
-            <label class="feedback__label feedback__label_num">
+            <div class="feedback__error feedback__field-name"></div>
+            <label class="feedback__label feedback__label_num email-label">
                 <input
+                        name="email" maxlength="30"
                         type="text" class="feedback__input feedback__input_num"
                         autocomplete="off" placeholder="e-mail"
                 >
             </label>
-            <label class="feedback__label feedback__label_num">
+            <div class="feedback__error feedback__field-email"></div>
+            <label class="feedback__label feedback__label_num phone-label">
                 <input
+                        name="phone" id="input-phone"
                         type="text" class="feedback__input feedback__input_num"
                         autocomplete="off" placeholder="Номер телефона"
                 >
             </label>
+            <div class="feedback__error feedback__field-phone"></div>
             <label class="feedback__textarea-label">
                 Сфера вашего бизнеса и примерный объем вашей аудитории
-                <textarea name="" class="feedback__textarea"></textarea>
+                <textarea name="text" class="feedback__textarea"></textarea>
             </label>
-            <input id="checkbox" type="checkbox" class="feedback__checkbox">
+            <input
+                    id="checkbox" type="checkbox" class="feedback__checkbox"
+                    name="check" value="1"
+            >
             <label class="feedback__label-checkbox" for="checkbox">
                 <span class="feedback__checkbox-text">Хочу получить спецпредложение для малого бизнеса</span>
             </label>
-            <button type="submit" class="feedback__button">ОСТАВИТЬ ЗАЯВКУ</button>
+            <button type="submit" class="feedback__button" id="submit">ОСТАВИТЬ ЗАЯВКУ</button>
             <div class="feedback__policy">
                 * Нажимая на кнопку “Отправить заявку”, вы соглашаетесь с
                 <a href="#" class="feedback__policy-link"> Политикой конфиденциальности</a>
@@ -225,6 +246,7 @@
 
 <script src="assets/libs/jquery.min.js"></script>
 <script src="assets/libs/jquery.viewportchecker.min.js"></script>
+<script src="assets/libs/imask.min.js"></script>
 <script src="js/main.min.js"></script>
 <script src="js/pages.min.js"></script>
 <script src="js/jq-scripts.min.js"></script>

@@ -1,16 +1,53 @@
 @use '../config' as *;
 
 .main {
-  padding-top: 224px;
+
+  @include desktop {
+    padding-top: 200px;
+  }
+
+  @include tablet-l {
+    padding-top: 130px;
+  }
+
+  @include tablet {
+    padding-top: 130px;
+  }
+
+  @include phone {
+    padding-top: 96px;
+  }
 
   &__subtitle {
     @include h2;
     width: 70%;
-    margin: 0 auto 116px;
+
+    @include desktop {
+      margin: 0 auto 116px;
+    }
+
+    @include tablet-l {
+      margin: 0 auto 56px;
+      width: 80%;
+    }
+
+    @include tablet {
+      margin: 0 auto 64px;
+    }
+
+    @include phone {
+      @include h2-phone;
+      margin: 0 auto 49px;
+      width: 100%;
+    }
   }
 
   &__button {
-    @include button;
+    @include button($phone: false);
+
+    @include phone {
+      @include button($phone: true);
+    }
   }
 }
 

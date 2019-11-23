@@ -3,7 +3,21 @@
 .about {
 
   &__title {
-    padding-top: 160px;
+    @include desktop {
+      padding-top: 160px;
+    }
+
+    @include tablet-l {
+      padding-top: 130px;
+    }
+
+    @include tablet {
+      padding-top: 100px;
+    }
+
+    @include phone {
+      padding-top: 96px;
+    }
   }
 
   &__button {

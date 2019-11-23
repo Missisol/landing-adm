@@ -3,19 +3,62 @@
 .examples {
 
   &__title {
-    width: 80%;
-    margin: 0 auto 72px;
+    width: 100%;
+
+    @include desktop {
+      width: 80%;
+      margin: 0 auto 72px;
+      padding-top: 150px;
+    }
+
+    @include tablet-l {
+      padding-top: 100px;
+      margin: 0 auto 14px;
+    }
+
+    @include tablet {
+      padding-top: 100px;
+      margin: 0 auto 14px;
+    }
+
+    @include phone {
+      padding-top: 60px;
+      margin: 0 auto 14px;
+      font-size: 30px;
+      line-height: 44px;
+    }
   }
 
   &__statistics {
-    height: 290px;
-    margin: 0 100px 58px;
+
+    @include desktop {
+      height: 290px;
+      margin: 0 100px 58px;
+    }
+
+    @include tablet-l {
+      height: 226px;
+      margin: 0 0 18px;
+    }
+
+    @include tablet {
+      height: 256px;
+      margin: 0 0 18px;
+    }
+
+    @include phone {
+      height: 280px;
+      margin: 0 0 18px;
+    }
   }
 
   &__items-wrap {
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+
+    @include desktop {
+      margin-bottom: 24px;
+    }
   }
 
   &__item-path {
@@ -28,14 +71,52 @@
     text-decoration: underline !important;
   }
 
+  &__item-text {
+
+    @include tablet-l {
+      width: 100%;
+      text-align: center;
+    }
+
+    @include tablet {
+      width: 100%;
+      text-align: center;
+    }
+
+    @include phone {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
   &__text {
-    height: 240px;
-    margin-bottom: 108px;
     display: none;
+
+    @include desktop {
+      height: 290px;
+      margin-bottom: 58px;
+    }
+
+    @include tablet-l {
+      height: 226px;
+      margin-bottom: 18px;
+    }
+
+    @include tablet {
+      height: 226px;
+      margin-bottom: 18px;
+    }
+    @include phone {
+      height: 280px;
+      margin-bottom: 18px;
+    }
   }
 
   &__name-wrap {
-    width: 1090px;
+    //width: 1090px;
+    width: 100%;
   }
 
   &__name {
@@ -43,12 +124,22 @@
     font-size: 36px;
     line-height: 53px;
     letter-spacing: 0.1em;
+
+    @include phone {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
   &__line-wrap {
-    position: relative;
-    min-width: 300px;
-    margin-right: 24px;
+    display: none;
+
+    @include desktop {
+      display: block;
+      position: relative;
+      min-width: 300px;
+      margin-right: 24px;
+    }
   }
 
   &__round-wrap {

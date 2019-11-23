@@ -49,8 +49,6 @@ const examplesTexts = [
 function toggleExamplesView(elem) {
     const statistic = document.querySelector('.examples__statistics');
     const textBlock = document.querySelector('.examples__text');
-    console.log(elem);
-
     if (elem.dataset.id === '1') {
         textBlock.style.display = 'none';
         statistic.style.display = 'block';
@@ -83,10 +81,12 @@ function getAdvantagesText(elem) {
 function getExamplesText(elem) {
     const exText = document.querySelector('.examples__text');
     const num = elem.dataset.id;
-    const item = examplesTexts.filter(item => item.num === +num);
-    const text = item[0].text;
-    exText.innerText = '';
-    exText.insertAdjacentText('afterbegin', text);
+    if (num !== '1') {
+        const item = examplesTexts.filter(item => item.num === +num);
+        const text = item[0].text;
+        exText.innerText = '';
+        exText.insertAdjacentText('afterbegin', text);
+    }
 }
 
 function makeAdvantagesPage(elem) {

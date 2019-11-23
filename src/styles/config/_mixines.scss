@@ -6,49 +6,86 @@
   }
 }
 
+@mixin tablet-l {
+  @media screen and (min-width: v.$tablet-l-width) and (max-width: v.$desktop-width - 1px) {
+    @content;
+  }
+}
+
 @mixin tablet {
-  @media screen and (min-width: v.$tablet-width) and (max-width: v.$desktop-width - 1px) {
+  @media screen and (min-width: v.$tablet-width) and (max-width: v.$tablet-l-width - 1px) {
     @content;
   }
 }
 
 @mixin phone {
-  @media screen and (min-width: v.$phone-width) and (max-width: v.$tablet-width - 1px) {
+  @media screen and (max-width: v.$tablet-width - 1px) {
     @content;
   }
 }
 
-@mixin h1 {
-  font-size: 98px;
-  line-height: 98px;
+@mixin h1-common {
   font-weight: bold;
   letter-spacing: 0.1em;
   text-align: center;
+  user-select: none;
 }
 
-@mixin h2 {
-  font-size: 64px;
-  line-height: 95px;
+@mixin h1 {
+  @include h1-common;
+  font-size: 98px;
+  line-height: 142px;
+}
+
+@mixin h1-phone {
+  @include h1-common;
+  font-size: 48px;
+  line-height: 71px;
+}
+
+@mixin h2-common {
   text-transform: lowercase;
   text-align: center;
   color: v.$yellow;
+  user-select: none;
 }
 
-@mixin button {
+@mixin h2 {
+  @include h2-common;
+  font-size: 64px;
+  line-height: 95px;
+}
+
+@mixin h2-phone {
+  @include h2-common;
+  font-size: 32px;
+  line-height: 47px;
+}
+
+@mixin button($phone: true) {
   position: relative;
   box-sizing: content-box;
-  width: 406px;
-  height: 83px;
   color: v.$black;
   background: v.$yellow;
   text-transform: uppercase;
   text-align: center;
-  font-size: 36px;
-  line-height: 83px;
   font-weight: 500;
   border-radius: 5px;
   border: 1px solid v.$yellow;
-  box-shadow: 0 0 0 13px v.$green;
+
+  @if $phone {
+    width: 254px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    box-shadow: 0 0 0 9px v.$green;
+  } @else {
+    width: 406px;
+    height: 83px;
+    font-size: 36px;
+    line-height: 83px;
+    box-shadow: 0 0 0 13px v.$green;
+  }
 
   &:before {
     content: '';
@@ -60,6 +97,24 @@
     left: -13px;
     right: -13px;
     bottom: -13px;
+
+    @if $phone {
+      top: -9px;
+      left: -9px;
+      right: -9px;
+      bottom: -9px;
+    } @else {
+    top: -13px;
+    left: -13px;
+    right: -13px;
+    bottom: -13px;
+  }
+}
+
+  &:disabled {
+    color: v.$yellow;
+    background: v.$black;
+    border: 1px solid v.$black;
   }
 
   @include desktop {

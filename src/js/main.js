@@ -1,9 +1,6 @@
 'use strict';
 
-const open = document.querySelector('#open');
-const close = document.querySelector('#close');
-const header = document.querySelector('.header-fixed');
-const anchors = document.querySelectorAll('.anchor');
+const header = document.querySelector('.header__fixed');
 const pagination = document.querySelector('.pagination__wrap');
 
 function openElem(elem) {
@@ -12,14 +9,23 @@ function openElem(elem) {
         header.style.display = 'none';
         headerAnimate.style.display = 'flex';
         pagination.style.opacity = '0';
-        elem.style.animation = 'open-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
+        elem.classList.remove('layout__close-rotate');
+        elem.classList.remove('layout__open-rotate');
+        elem.classList.add('layout__open-rotate');
+
+        // elem.style.animation = 'open-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
     }
 }
 
 function closeElem(elem) {
     const headerAnimate = elem.querySelector('.header__animated');
     if (headerAnimate.style.display === 'flex') {
-        elem.style.animation = 'close-rotate .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
+        elem.classList.remove('layout__close-rotate');
+        elem.classList.remove('layout__open-rotate');
+        elem.classList.add('layout__close-rotate');
+
+
+        // elem.style.animation = 'close-rotate .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
         setTimeout(() => {
             header.style.display = 'flex';
             headerAnimate.style.display = 'none';
@@ -30,7 +36,7 @@ function closeElem(elem) {
 function isVisible(elem) {
     let coords = elem.getBoundingClientRect();
     let windowHeight = document.documentElement.clientHeight;
-    return coords.top < windowHeight;
+    return coords.top < windowHeight / 2;
 }
 
 function getElem(str) {
@@ -44,16 +50,6 @@ function getElem(str) {
     }
 }
 
-for (let anchor of anchors) {
-    anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = e.target;
-        const id = target.getAttribute('href');
-        if (id !== '#') {
-            getElem('close');
-        }
-    })
-}
 
 function checkVisibilityFeedbackPage() {
     const feedback = document.querySelector('.feedback');
@@ -93,16 +89,6 @@ function checkVisibilityPages(link) {
     }
 }
 
-function init() {
-    open.addEventListener('click', (e) => {
-        getElem('open');
-    });
-
-    close.addEventListener('click', () => {
-        getElem('close');
-    });
-}
-
 function initSmoothScrolling() {
     $('.anchor').on('click', e => {
         e.preventDefault();
@@ -111,11 +97,63 @@ function initSmoothScrolling() {
         setTimeout(() => {
             $('body, html').animate({
                 scrollTop: top
-            }, 1000, function () {
+            }, 600, function () {
                 checkVisibilityFeedbackPage();
                 checkVisibilityPages(link);
             });
-        }, 1000)
+        }, 800)
+    })
+}
+
+// function initSmoothScrollingOnePage(e) {
+//     const target = e.target;
+//     console.log(target);
+//     let dist = document.documentElement.clientHeight;
+//     console.log(dist);
+//     if (e && e.wheelDelta < 0) {
+//         $('body, html').animate({
+//             scrollTop: 2 * dist
+//         }, 1000, function () {
+//             console.log('yes');
+//             checkVisibilityFeedbackPage();
+//         });
+//     } else if (e && e.wheelDelta > 0) {
+//         $('body, html').animate({
+//             scrollBy: - document.documentElement.clientHeight
+//         }, 1000, function () {
+//             checkVisibilityFeedbackPage();
+//         });
+//     }
+//
+// }
+
+function init() {
+    const open = document.querySelector('#open');
+    const close = document.querySelector('#close');
+    const anchors = document.querySelectorAll('.anchor');
+
+    open.addEventListener('click', (e) => {
+        getElem('open');
+    });
+
+    close.addEventListener('click', () => {
+        getElem('close');
+    });
+
+    for (let anchor of anchors) {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = e.target;
+            const id = target.getAttribute('href');
+            if (id !== '#') {
+                getElem('close');
+            }
+        })
+    }
+
+    document.body.addEventListener('wheel', (e) => {
+        // console.log(e);
+        // initSmoothScrollingOnePage(e);
     })
 }
 

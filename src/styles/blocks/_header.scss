@@ -1,16 +1,40 @@
 @use '../config' as *;
 
+.header-wrap {
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+
+  @include phone {
+    width: 100vw;
+  }
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 0;
-  z-index: 20;
-  left: calc((100vw - 1290px) / 2);
-  width: 100%;
-  height: 112px;
-  padding: 72px 0 0;
+  padding-top: 72px;
+
+  @include tablet-l {
+    padding-top: 50px;
+  }
+
+  @include tablet {
+    padding-top: 50px;
+  }
+
+  @include phone {
+    padding-top: 29px;
+  }
+
+
+  &__header__animated {
+    position: fixed;
+    top: 0;
+    z-index: 20;
+  }
 
   &__logo-wrap {
     display: none;
@@ -18,20 +42,40 @@
 
   &__logo {
     margin-right: 8px;
+
+    @include phone {
+      width: 30px;
+      height: 30px;
+    }
   }
 
   &__logo-text {
     color: $white;
+
+    @include phone {
+      font-size: 14px;
+      line-height: 21px;
+    }
   }
 
   &__text {
     color: $white;
+
+    @include phone {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
   &__menu {
     width: 110px;
     height: 27px;
     cursor: pointer;
+
+    @include phone {
+      width: 55px;
+      height: 14px;
+    }
   }
 
   &__animated {
@@ -41,22 +85,35 @@
 
 .pagination {
 
-  &__wrap {
-    position: absolute;
-    z-index: 20;
-    right: 0;
-    top: 370px;
-  }
+    &__wrap {
+      position: absolute;
+      z-index: 20;
+      right: 0;
+      top: 370px;
 
-  &__pag-item {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: $dark-grey;
-    margin-bottom: 26px;
+      @include tablet {
+        display: none;
+      }
 
-    &_active {
-      background: $grey;
+      @include tablet-l {
+        display: none;
+      }
+
+      @include phone {
+        display: none;
+      }
     }
-  }
+
+    &__pag-item {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: $dark-grey;
+      margin-bottom: 26px;
+
+      &_active {
+        background: $grey;
+      }
+    }
+
 }

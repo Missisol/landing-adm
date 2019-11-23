@@ -9,7 +9,21 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding: 72px 72px 220px 0;
+
+  @include desktop {
+    padding: 72px 72px 220px 0;
+  }
+
+  @include tablet-l {
+    width: 100vw;
+    padding: 34px 47px 140px;
+  }
+
+  @include phone {
+    width: 100vw;
+    height: 100vh;
+    padding: 24px 47px 160px;
+  }
 
   &__wrapper {
     display: flex;
@@ -20,6 +34,11 @@
 
   &__close {
     cursor: pointer;
+
+    @include phone {
+      width: 42px;
+      height: 40px;
+    }
   }
 
   &__item {
@@ -27,5 +46,11 @@
     font-weight: 500;
     color: $black;
     text-transform: uppercase;
+    user-select: none;
+
+    @include phone {
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
 }
