@@ -2,22 +2,17 @@
 
 .about {
 
-  &__title {
-    @include desktop {
-      padding-top: 160px;
-    }
+  @include desktop {
+    padding-top: 260px;
+    height: 100vh;
+  }
 
-    @include tablet-l {
-      padding-top: 130px;
-    }
+  @include tablet{
+    padding-top: 130px;
+  }
 
-    @include tablet {
-      padding-top: 100px;
-    }
-
-    @include phone {
-      padding-top: 96px;
-    }
+  @include phone {
+    padding-top: 96px;
   }
 
   &__button {

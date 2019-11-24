@@ -2,27 +2,32 @@
 
 .examples {
 
+  @include desktop {
+    padding-top: 150px;
+    height: 100vh;
+  }
+
+  @include tablet {
+    padding-top: 100px;
+  }
+
+  @include phone {
+    padding-top: 60px;
+  }
+
   &__title {
     width: 100%;
 
     @include desktop {
       width: 80%;
       margin: 0 auto 72px;
-      padding-top: 150px;
-    }
-
-    @include tablet-l {
-      padding-top: 100px;
-      margin: 0 auto 14px;
     }
 
     @include tablet {
-      padding-top: 100px;
       margin: 0 auto 14px;
     }
 
     @include phone {
-      padding-top: 60px;
       margin: 0 auto 14px;
       font-size: 30px;
       line-height: 44px;
@@ -36,13 +41,8 @@
       margin: 0 100px 58px;
     }
 
-    @include tablet-l {
+    @include tablet{
       height: 226px;
-      margin: 0 0 18px;
-    }
-
-    @include tablet {
-      height: 256px;
       margin: 0 0 18px;
     }
 
@@ -73,12 +73,7 @@
 
   &__item-text {
 
-    @include tablet-l {
-      width: 100%;
-      text-align: center;
-    }
-
-    @include tablet {
+    @include tablet{
       width: 100%;
       text-align: center;
     }
@@ -99,15 +94,11 @@
       margin-bottom: 58px;
     }
 
-    @include tablet-l {
+    @include tablet{
       height: 226px;
       margin-bottom: 18px;
     }
 
-    @include tablet {
-      height: 226px;
-      margin-bottom: 18px;
-    }
     @include phone {
       height: 280px;
       margin-bottom: 18px;
@@ -115,8 +106,15 @@
   }
 
   &__name-wrap {
-    //width: 1090px;
     width: 100%;
+
+    @include phone {
+      height: 57px;
+      display: flex;
+      min-width: auto;
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
   }
 
   &__name {
@@ -128,6 +126,11 @@
     @include phone {
       font-size: 16px;
       line-height: 24px;
+
+      margin-left: 10vw;
+      padding-bottom: 8px;
+      border-bottom: 1px solid transparent;
+      transition: color .2s linear;
     }
   }
 

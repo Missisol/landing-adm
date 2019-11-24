@@ -3,14 +3,11 @@
 .main {
 
   @include desktop {
-    padding-top: 200px;
+    padding-top: 150px;
+    height: 100vh;
   }
 
-  @include tablet-l {
-    padding-top: 130px;
-  }
-
-  @include tablet {
+  @include tablet{
     padding-top: 130px;
   }
 
@@ -23,16 +20,12 @@
     width: 70%;
 
     @include desktop {
-      margin: 0 auto 116px;
+      margin: 0 auto 80px;
     }
 
-    @include tablet-l {
+    @include tablet{
       margin: 0 auto 56px;
       width: 80%;
-    }
-
-    @include tablet {
-      margin: 0 auto 64px;
     }
 
     @include phone {
@@ -46,7 +39,7 @@
     @include button($phone: false);
 
     @include phone {
-      @include button($phone: true);
+      @include button;
     }
   }
 }

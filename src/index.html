@@ -32,6 +32,9 @@
             </div>
         </a>
         <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
+        <div class="header__burger-wrap" id="toggle">
+            <span class="header__burger" id="icon"></span>
+        </div>
         <img src="assets/images/burger.png" alt="menu" class="header__menu" id="open">
         <div class="pagination__wrap">
             <a href="#home" class="pagination__pag-item anchor"></a>
@@ -178,7 +181,7 @@
         <div class="examples__text layout__text"></div>
         <div class="layout__num-wrap examples__name-wrap">
             <div class="layout__name layout__name_active examples__name" data-id="1">Статистика</div>
-            <div class="layout__name examples__name" data-id="2">ЗАО Тандер</div>
+            <div class="layout__name examples__name" data-id="2">ЗАО&nbsp;Тандер</div>
             <div class="layout__name examples__name" data-id="3">Вымпелком</div>
             <div class="layout__name examples__name" data-id="4">PepsiCo</div>
         </div>
@@ -211,7 +214,7 @@
                 <input
                         name="email" maxlength="30"
                         type="text" class="feedback__input feedback__input_num"
-                        autocomplete="off" placeholder="e-mail"
+                        autocomplete="off" placeholder="E-mail"
                 >
             </label>
             <div class="feedback__error feedback__field-email"></div>
@@ -225,7 +228,7 @@
             <div class="feedback__error feedback__field-phone"></div>
             <label class="feedback__textarea-label">
                 Сфера вашего бизнеса и примерный объем вашей аудитории
-                <textarea name="text" class="feedback__textarea"></textarea>
+                <textarea name="message" class="feedback__textarea"></textarea>
             </label>
             <input
                     id="checkbox" type="checkbox" class="feedback__checkbox"

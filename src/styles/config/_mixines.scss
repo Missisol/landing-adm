@@ -6,14 +6,8 @@
   }
 }
 
-@mixin tablet-l {
-  @media screen and (min-width: v.$tablet-l-width) and (max-width: v.$desktop-width - 1px) {
-    @content;
-  }
-}
-
 @mixin tablet {
-  @media screen and (min-width: v.$tablet-width) and (max-width: v.$tablet-l-width - 1px) {
+  @media screen and (min-width: v.$tablet-width) and (max-width: v.$desktop-width - 1px) {
     @content;
   }
 }

@@ -1,20 +1,10 @@
 const form = document.querySelector('.feedback__form');
-const feedback = document.querySelector('#feedback');
-
-form.addEventListener('click', (e) => {
-    // e.preventDefault();
-
-    // feedback.style.position = 'fixed';
-    // feedback.style.top = '0';
-    // feedback.style.left = '0';
-});
-
 
 const element = document.querySelector('#input-phone');
-
 let phoneMask = IMask(element, {
     mask: '+{7}(000)000-00-00',
 });
+
 
 class SubmitForm {
 
@@ -30,21 +20,16 @@ class SubmitForm {
     init() {
         this.formEl = document.querySelector(this.formSelector);
         this.submitBtn = document.querySelector(this.btnSubmitSelector);
+        this.rules = [
+            {name: 'name', regexp: /^[a-zа-яё\s-]+$/i},
+            {name: 'email', regexp: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/},
+        ];
 
         for (let input of this.inputNames) {
             const inputEl = this.formEl[`${input}`];
 
-            if (inputEl.name === 'name') {
-                inputEl.addEventListener('input', () => this.checkName(inputEl));
-            }
-
-            if (inputEl.name === 'email') {
-                inputEl.addEventListener('input', () => this.checkEmail(inputEl));
-            }
-
-            if (inputEl.name === 'phone') {
-                inputEl.addEventListener('input', () => this.checkPhone(inputEl));
-            }
+            inputEl.name === 'phone' ? inputEl.addEventListener('input', () => this.checkPhone(inputEl)) :
+                inputEl.addEventListener('input', () => this.checkFields(inputEl));
         }
 
         this.formEl.addEventListener('submit', e => this.formSubmit(e));
@@ -63,96 +48,45 @@ class SubmitForm {
     validate() {
         let isValid = true;
 
-        const phoneValue = this.formEl['phone'].value;
-        const emailValue = this.formEl['email'].value;
-        const message = 'Поле обязательно для заполнения';
-
-        if (phoneValue === '' && emailValue === '') {
-            this.validFunction(this.formEl['phone'], message);
-            this.validFunction(this.formEl['email'], message);
-            isValid = false;
-        }
-
         for (let input of this.inputNames) {
             const inputEl = this.formEl[`${input}`];
 
-            if (inputEl.name === 'name') {
+            (inputEl.name === 'name' || inputEl.name === 'email') ?
+                (!this.checkFields(inputEl) ? isValid = false : null)
+                : null;
 
-                if (!this.checkName(inputEl)) {
-                    isValid = false;
-                }
-            }
-
-            if (inputEl.name === 'phone' && inputEl.value) {
-
-                if (!this.checkPhone(inputEl)) {
-                    isValid = false;
-                } else if (!this.formEl['email'].value) {
-
-                    this.setValidField(this.formEl['email']);
-                } else {
-                    if (!this.checkEmail(this.formEl['email'])) {
-                        isValid = false;
-                    }
-                }
-            }
-
-            if (inputEl.name === 'email' && inputEl.value) {
-
-                if (!this.checkEmail(inputEl)) {
-
-                    isValid = false;
-                } else if (this.formEl['phone'].value === '') {
-
-                    this.setValidField(this.formEl['phone']);
-                } else {
-                    if (!this.checkPhone(this.formEl['phone'])) {
-                        isValid = false;
-                    }
-                }
-            }
+            inputEl.name === 'phone' ? (!this.checkPhone(inputEl) ? isValid = false : null)
+                : null;
         }
 
         return isValid;
     }
 
-    checkName(inputEl) {
+    checkFields(inputEl) {
         let message = null;
-        const regexp = /[^a-zа-я]|(^$)/gi;
 
-        regexp.test(inputEl.value) ?
-            (inputEl.value === '' ? message = 'Поле обязательно для заполнения' :
-                message = 'Поле должно содержать только буквы')
-            : null;
+        for (let rule of this.rules) {
+            if (rule.name === inputEl.name) {
+                !rule.regexp.test(inputEl.value) ?
+                    (inputEl.value.trim() === '' ? message = 'Поле обязательно для заполнения' :
+                        message = 'Проверьте корректность введенных данных')
+                    : null;
 
-        return this.validFunction(inputEl, message);
+                return this.validFunction(inputEl, message);
+            }
+        }
     }
 
     checkPhone(inputEl) {
         let message = null;
         const phone = phoneMask.on('complete', () => {
         });
-
         phone.unmaskedValue.length !== 11 ? message = ' Поле обязательно для заполнения' : null;
 
         return this.validFunction(inputEl, message);
     }
 
-    checkEmail(inputEl) {
-        let message = null;
-
-        const regexp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
-        !regexp.test(inputEl.value) ?
-            (inputEl.value === '' ? message = 'Поле обязательно для заполнения' :
-                message = 'Проверьте правильность введенных данных')
-            : null;
-
-        return this.validFunction(inputEl, message);
-    }
-
     validFunction(inputEl, message) {
-
         let isValid = true;
 
         if (message !== null) {
@@ -176,7 +110,6 @@ class SubmitForm {
     }
 
     setValidField(inputEl) {
-
         const field = document.querySelector(`.feedback__field-${inputEl.name}`);
         const label = document.querySelector(`.${inputEl.name}-label`);
         field.innerHTML = '';
@@ -208,14 +141,12 @@ class SubmitForm {
             },
             body: JSON.stringify(this.formValue)
         })
-            .then(res => res.json())
-            .then(responseOK => {
-                this.accept();
+            .then(res => {
+                if (res.status === 200) {
+                    this.accept();
+                }
             })
             .catch(err => console.log(err));
-
-        // Функция должна вызываться в случае ответа сервера ОК
-        this.accept();
     }
 
     accept() {
@@ -227,17 +158,16 @@ class SubmitForm {
     }
 }
 
-const api = 'http://.../api/';
+const api = 'http://api-dm.amberlight.io/request/requests/';
 const inputs = [
     'name',
     'email',
     'phone',
-    'text',
-    'check',
+    'message',
+    // 'check',
 ];
 const formSelector = '.feedback__form';
 const btnSubmitSelector = '.feedback__button';
-
 
 const send = new SubmitForm(api, inputs, formSelector, btnSubmitSelector);
 

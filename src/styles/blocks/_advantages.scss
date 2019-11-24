@@ -2,27 +2,34 @@
 
 .advantages {
 
-  &__title {
-    width: 70%;
-    margin: 0 auto 72px;
-    padding-top: 105px;
+  @include desktop {
+    padding-top: 200px;
+    height: 100vh;
+  }
 
-    @include tablet-l {
-      margin: 0 auto 54px;
-      padding-top: 120px;
-      width: 100%;
+  @include tablet{
+    padding-top: 120px;
+  }
+
+  @include phone {
+    padding-top: 96px;
+  }
+
+  &__title {
+
+    @include desktop {
+      width: 70%;
+      margin-bottom: 72px;
     }
 
     @include tablet {
-      margin: 0 auto 34px;
-      padding-top: 196px;
+      margin-bottom: 54px;
       width: 100%;
     }
 
     @include phone {
       width: 100%;
-      padding-top: 96px;
-      margin: 0 auto 34px;
+      margin-bottom: 34px;
       font-size: 30px;
       line-height: 44px;
     }
@@ -33,10 +40,6 @@
 
     @include desktop {
       margin-bottom: 64px;
-    }
-
-    @include tablet-l {
-      margin-bottom: 34px;
     }
 
     @include tablet {

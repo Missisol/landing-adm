@@ -10,7 +10,9 @@ body {
 }
 
 body {
-  overflow: hidden;
+  @include m.desktop {
+    overflow: hidden;
+  }
 }
 
 .wrapper {
@@ -25,13 +27,9 @@ body {
     max-width: v.$desktop-container;
   }
 
-  @include m.tablet-l() {
+  @include m.tablet() {
   max-width: 86%;
 }
-
-  @include m.tablet() {
-    max-width: 90%;
-  }
 
   @include m.phone() {
     max-width: 80%;

@@ -10,7 +10,7 @@ function openElem(elem) {
         headerAnimate.style.display = 'flex';
         pagination.style.opacity = '0';
         elem.classList.remove('layout__close-rotate');
-        elem.classList.remove('layout__open-rotate');
+        // elem.classList.remove('layout__open-rotate');
         elem.classList.add('layout__open-rotate');
 
         // elem.style.animation = 'open-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
@@ -20,10 +20,9 @@ function openElem(elem) {
 function closeElem(elem) {
     const headerAnimate = elem.querySelector('.header__animated');
     if (headerAnimate.style.display === 'flex') {
-        elem.classList.remove('layout__close-rotate');
+        // elem.classList.remove('layout__close-rotate');
         elem.classList.remove('layout__open-rotate');
         elem.classList.add('layout__close-rotate');
-
 
         // elem.style.animation = 'close-rotate .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
         setTimeout(() => {
@@ -36,7 +35,7 @@ function closeElem(elem) {
 function isVisible(elem) {
     let coords = elem.getBoundingClientRect();
     let windowHeight = document.documentElement.clientHeight;
-    return coords.top < windowHeight / 2;
+    return coords.top < windowHeight;
 }
 
 function getElem(str) {
@@ -50,6 +49,31 @@ function getElem(str) {
     }
 }
 
+function slideElem(e) {
+    const toggle = document.querySelector('#toggle');
+    const nav = document.querySelector('.nav');
+    const text = document.querySelector('.header__text');
+    const logo = document.querySelector('.header__logo-wrap');
+    if (!toggle.classList.contains('active')) {
+        toggle.classList.add('active');
+        nav.classList.remove('nav__close-menu');
+        nav.classList.add('nav__open-menu');
+        text.classList.add('header__hidden');
+        logo.classList.add('header__hidden');
+        header.classList.add('transparent');
+        document.body.style.overflow = 'hidden';
+    } else if (toggle.classList.contains('active')) {
+        toggle.classList.remove('active');
+        nav.classList.remove('nav__open-menu');
+        nav.classList.add('nav__close-menu');
+        text.classList.remove('header__hidden');
+        setTimeout(() => {
+            logo.classList.remove('header__hidden');
+            header.classList.remove('transparent');
+        }, 600);
+        document.body.style.overflow = '';
+    }
+}
 
 function checkVisibilityFeedbackPage() {
     const feedback = document.querySelector('.feedback');
@@ -95,11 +119,12 @@ function initSmoothScrolling() {
         const link = $(e.target).attr('href');
         let top = $(link).offset().top;
         setTimeout(() => {
+            document.documentElement.clientWidth <= 1400 ? slideElem() : null;
             $('body, html').animate({
                 scrollTop: top
             }, 600, function () {
-                checkVisibilityFeedbackPage();
-                checkVisibilityPages(link);
+                    checkVisibilityFeedbackPage();
+                    checkVisibilityPages(link);
             });
         }, 800)
     })
@@ -131,6 +156,7 @@ function init() {
     const open = document.querySelector('#open');
     const close = document.querySelector('#close');
     const anchors = document.querySelectorAll('.anchor');
+    const toggle = document.querySelector('#toggle');
 
     open.addEventListener('click', (e) => {
         getElem('open');
@@ -140,13 +166,19 @@ function init() {
         getElem('close');
     });
 
+    toggle.addEventListener('click', (e) => {
+        slideElem();
+    });
+
     for (let anchor of anchors) {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();
             const target = e.target;
             const id = target.getAttribute('href');
             if (id !== '#') {
-                getElem('close');
+                if (document.documentElement.clientWidth >= 1400) {
+                    getElem('close');
+                }
             }
         })
     }
