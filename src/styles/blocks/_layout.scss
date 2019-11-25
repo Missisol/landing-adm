@@ -92,6 +92,7 @@
     @include phone {
       font-size: 34px;
       line-height: 50px;
+      margin: 0;
     }
 
     &:after {
@@ -119,6 +120,10 @@
 
     &:hover:after {
       width: 100%;
+
+      @include phone {
+        width: calc(100% - 6vw);
+      }
     }
   }
 
@@ -141,6 +146,7 @@
       @include phone {
         bottom: -3px;
         height: 1px;
+        width: calc(100% - 6vw);
       }
     }
   }

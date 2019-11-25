@@ -229,18 +229,6 @@ function init() {
     })
 }
 
-// const elem = document.querySelector('.examples__name-wrap');
-// const hammertime = new Hammer(elem, {
-//     recognizers: [
-//         [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
-//     ]
-// });
-// hammertime.on('swipe', function (ev) {
-//     console.log(ev);
-// });
-//
-// hammertime.get('swipe').set({derection: Hammer.DIRECTION_HORIZONTAL});
-
 window.onload = function () {
     init();
     initSmoothScrolling();

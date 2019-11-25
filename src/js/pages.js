@@ -106,7 +106,10 @@ function initPages() {
         getAdvantagesText(e.target);
     });
 
-    const exTexts = document.querySelector('.examples__name-wrap');
+    let selector;
+    document.documentElement.clientWidth > 768 ? selector = '.examples__name-wrap_desktop'
+        : selector = '.examples__name-wrap_phone';
+    const exTexts = document.querySelector(`${selector}`);
     exTexts.addEventListener('click', (e) => {
         makeExamplesPage(e.target);
         getExamplesText(e.target);

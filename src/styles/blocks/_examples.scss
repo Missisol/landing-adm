@@ -48,7 +48,7 @@
 
     @include phone {
       height: 280px;
-      margin: 0 0 18px;
+      margin: 0 0 14px;
     }
   }
 
@@ -101,7 +101,7 @@
 
     @include phone {
       height: 280px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
   }
 
@@ -109,14 +109,36 @@
     width: 100%;
     user-select: none;
 
+    @include desktop {
+      &_phone {
+        display: none;
+      }
+    }
+
+    @include tablet {
+      &_phone {
+        display: none;
+      }
+    }
+
     @include phone {
-      height: 30px;
+      height: 48px;
       display: flex;
       min-width: auto;
       overflow-x: scroll;
       white-space: nowrap;
       padding-bottom: 6px;
+
+      &_desktop {
+        display: none;
+      }
     }
+  }
+
+  &__name-wrap::-webkit-scrollbar,
+  &__name-wrap::-webkit-scrollbar-corner,
+  &__name-wrap::-webkit-scrollbar:horizontal {
+    background: $green;
   }
 
   &__name {
@@ -127,9 +149,8 @@
 
     @include phone {
       font-size: 16px;
-      line-height: 24px;
-
-      //margin-left: 10vw;
+      padding-right: 3vw;
+      padding-left: 3vw;
       border-bottom: 1px solid transparent;
       transition: color .2s linear;
     }
