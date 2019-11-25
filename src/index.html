@@ -45,7 +45,7 @@
         </div>
     </header>
 </div>
-<section class="main layout" id="home" data-id="1">
+<section class="main layout" id="home" data-counter="1">
     <div class="header-wrap">
         <header class="header container header__animated">
             <a href="#" class="header__text">ОСТАВИТЬ ЗАЯВКУ</a>
@@ -62,7 +62,7 @@
         <a href="#about" class="main__button anchor">УЗНАТЬ ПОДРОБНЕЕ</a>
     </div>
 </section>
-<section class="about layout" id="about" data-id="2">
+<section class="about layout" id="about" data-counter="2">
     <div class="header-wrap">
         <header class="header container header__animated">
             <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
@@ -81,7 +81,7 @@
         </div>
     </div>
 </section>
-<section class="advantages layout" id="advantages" data-id="3">
+<section class="advantages layout" id="advantages" data-counter="3">
     <div class="header-wrap">
         <header class="header container header__animated">
             <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
@@ -104,7 +104,7 @@
         </div>
     </div>
 </section>
-<section class="examples layout" id="examples" data-id="4">
+<section class="examples layout" id="examples" data-counter="4">
     <div class="header-wrap">
         <header class="header container header__animated">
             <a href="#feedback" class="header__text anchor">ОСТАВИТЬ ЗАЯВКУ</a>
@@ -187,7 +187,7 @@
         </div>
     </div>
 </section>
-<section class="feedback layout" id="feedback" data-id="5">
+<section class="feedback layout" id="feedback" data-counter="5">
     <div class="header-wrap">
         <header class="header container header__animated">
             <a href="http://amberlight.io/" class="feedback__logo-wrap" target="_blank">
@@ -230,13 +230,13 @@
                 Сфера вашего бизнеса и примерный объем вашей аудитории
                 <textarea name="message" class="feedback__textarea"></textarea>
             </label>
-            <input
-                    id="checkbox" type="checkbox" class="feedback__checkbox"
-                    name="check" value="1"
-            >
-            <label class="feedback__label-checkbox" for="checkbox">
-                <span class="feedback__checkbox-text">Хочу получить спецпредложение для малого бизнеса</span>
-            </label>
+<!--            <input-->
+<!--                    id="checkbox" type="checkbox" class="feedback__checkbox"-->
+<!--                    name="check" value="1"-->
+<!--            >-->
+<!--            <label class="feedback__label-checkbox" for="checkbox">-->
+<!--                <span class="feedback__checkbox-text">Хочу получить спецпредложение для малого бизнеса</span>-->
+<!--            </label>-->
             <button type="submit" class="feedback__button" id="submit">ОСТАВИТЬ ЗАЯВКУ</button>
             <div class="feedback__policy">
                 * Нажимая на кнопку “Отправить заявку”, вы соглашаетесь с
@@ -249,6 +249,7 @@
 
 <script src="assets/libs/jquery.min.js"></script>
 <script src="assets/libs/jquery.viewportchecker.min.js"></script>
+<script src="assets/libs/hammer.min.js"></script>
 <script src="assets/libs/imask.min.js"></script>
 <script src="js/main.min.js"></script>
 <script src="js/pages.min.js"></script>

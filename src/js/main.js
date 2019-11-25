@@ -2,25 +2,31 @@
 
 const header = document.querySelector('.header__fixed');
 const pagination = document.querySelector('.pagination__wrap');
+const buttonMain = document.querySelector('.main__button');
+const buttonSubmit = document.querySelector('.feedback__button');
+const layouts = document.querySelectorAll('.layout');
 
+/* Отвечает за анимацию секции страницы в десктопной версии*/
 function openElem(elem) {
     const headerAnimate = elem.querySelector('.header__animated');
     if (headerAnimate.style.display !== 'flex') {
         header.style.display = 'none';
         headerAnimate.style.display = 'flex';
         pagination.style.opacity = '0';
+        buttonMain.setAttribute('href', '#');
+        buttonSubmit.setAttribute('disabled', 'disabled');
+        buttonSubmit.classList.add('feedback__button_disabled');
         elem.classList.remove('layout__close-rotate');
-        // elem.classList.remove('layout__open-rotate');
         elem.classList.add('layout__open-rotate');
 
         // elem.style.animation = 'open-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both';
     }
 }
 
+/* Отвечает за анимацию закрытия секции страницы в десктопной версии*/
 function closeElem(elem) {
     const headerAnimate = elem.querySelector('.header__animated');
     if (headerAnimate.style.display === 'flex') {
-        // elem.classList.remove('layout__close-rotate');
         elem.classList.remove('layout__open-rotate');
         elem.classList.add('layout__close-rotate');
 
@@ -28,19 +34,25 @@ function closeElem(elem) {
         setTimeout(() => {
             header.style.display = 'flex';
             headerAnimate.style.display = 'none';
+            buttonMain.setAttribute('href', '#about');
+            buttonSubmit.removeAttribute('disabled');
+            buttonSubmit.classList.remove('feedback__button_disabled');
         }, 600)
     }
 }
 
+/* Проверяет видимость элемента в окне браузера */
 function isVisible(elem) {
     let coords = elem.getBoundingClientRect();
     let windowHeight = document.documentElement.clientHeight;
     return coords.top < windowHeight;
 }
 
+/* Определяет, какой элемент видим в окне браузера и вызывает
+функцию открытия/закрытия элемента */
 function getElem(str) {
-    const elems = document.querySelectorAll('.layout');
-    for (let elem of elems) {
+    // const elems = document.querySelectorAll('.layout');
+    for (let elem of layouts) {
         if (isVisible(elem) && str === 'open') {
             openElem(elem);
         } else if (isVisible(elem) && str === 'close') {
@@ -49,6 +61,7 @@ function getElem(str) {
     }
 }
 
+/* Вызывает появление/скрытие бокового меню на планшетной и мобильной версиях */
 function slideElem(e) {
     const toggle = document.querySelector('#toggle');
     const nav = document.querySelector('.nav');
@@ -59,8 +72,10 @@ function slideElem(e) {
         nav.classList.remove('nav__close-menu');
         nav.classList.add('nav__open-menu');
         text.classList.add('header__hidden');
-        logo.classList.add('header__hidden');
-        header.classList.add('transparent');
+        setTimeout(() => {
+            logo.classList.add('header__hidden');
+            // header.classList.add('transparent');
+        }, 300);
         document.body.style.overflow = 'hidden';
     } else if (toggle.classList.contains('active')) {
         toggle.classList.remove('active');
@@ -69,12 +84,13 @@ function slideElem(e) {
         text.classList.remove('header__hidden');
         setTimeout(() => {
             logo.classList.remove('header__hidden');
-            header.classList.remove('transparent');
+            // header.classList.remove('transparent');
         }, 600);
         document.body.style.overflow = '';
     }
 }
 
+/* Проверяет видимость последней страницы сайта для отображения/скрытия лого в хедере */
 function checkVisibilityFeedbackPage() {
     const feedback = document.querySelector('.feedback');
     const logo = document.querySelector('.header__logo-wrap');
@@ -88,13 +104,15 @@ function checkVisibilityFeedbackPage() {
     }
 }
 
+/* Проверяет видимость первой страницы для скрытия пагинации */
 function checkVisibilityHomePage() {
     const home = document.querySelector('#home');
     !!isVisible(home) ? pagination.style.opacity = '0' :
         pagination.style.opacity = '1';
 }
 
-function checkVisibilityPages(link) {
+/* Определяет видимую страницу и активирует нужноый пункт пагинации */
+function getPaginationActiveItem(link) {
     const elem = document.querySelector(link);
     const linkElems = document.querySelectorAll('.pagination__pag-item');
 
@@ -113,6 +131,7 @@ function checkVisibilityPages(link) {
     }
 }
 
+/* Инициирует плавный скроллинг */
 function initSmoothScrolling() {
     $('.anchor').on('click', e => {
         e.preventDefault();
@@ -124,34 +143,56 @@ function initSmoothScrolling() {
                 scrollTop: top
             }, 600, function () {
                     checkVisibilityFeedbackPage();
-                    checkVisibilityPages(link);
+                    getPaginationActiveItem(link);
             });
         }, 800)
     })
 }
 
-// function initSmoothScrollingOnePage(e) {
-//     const target = e.target;
-//     console.log(target);
-//     let dist = document.documentElement.clientHeight;
-//     console.log(dist);
-//     if (e && e.wheelDelta < 0) {
-//         $('body, html').animate({
-//             scrollTop: 2 * dist
-//         }, 1000, function () {
-//             console.log('yes');
-//             checkVisibilityFeedbackPage();
-//         });
-//     } else if (e && e.wheelDelta > 0) {
-//         $('body, html').animate({
-//             scrollBy: - document.documentElement.clientHeight
-//         }, 1000, function () {
-//             checkVisibilityFeedbackPage();
-//         });
-//     }
-//
-// }
+/* Находит для заданного элемента родительский элемент с указанным селектором */
+function getParent(elem, parentSelector) {
+    const parents = document.querySelectorAll(parentSelector);
+    for (let i = 0; i < parents.length; i++) {
+        let parent = parents[i];
+        if (parent.contains(elem)) {
+            return parent;
+        }
+    }
+}
 
+/* Определяет элемент по его data-атрибуту*/
+function getElemByDatAttribute(attr) {
+    for (let elem of layouts) {
+        if (+elem.dataset.counter === attr) {
+            return elem.getAttribute('id');
+        }
+    }
+}
+
+/* Инициирует сролл на один экран при прокрутке пользователем колесика мыши */
+function initSmoothScrollingOnePage(e) {
+    const parent = getParent(e.target, 'section');
+    const counter = +parent.dataset.counter;
+    let dist = document.documentElement.clientHeight;
+
+    if (e && e.deltaY > 0) {
+        $('body, html').animate({
+            scrollTop: counter * dist,
+        }, 600, function () {
+            checkVisibilityFeedbackPage();
+            getPaginationActiveItem(`#${getElemByDatAttribute(counter + 1)}`)
+        });
+    } else if (e && e.deltaY < 0) {
+        $('body, html').animate({
+            scrollTop: dist * (counter - 2),
+        }, 600, function () {
+            checkVisibilityFeedbackPage();
+            getPaginationActiveItem(`#${getElemByDatAttribute(counter - 1)}`)
+        });
+    }
+}
+
+/* Инициирует обработчики событий*/
 function init() {
     const open = document.querySelector('#open');
     const close = document.querySelector('#close');
@@ -184,10 +225,21 @@ function init() {
     }
 
     document.body.addEventListener('wheel', (e) => {
-        // console.log(e);
-        // initSmoothScrollingOnePage(e);
+        initSmoothScrollingOnePage(e);
     })
 }
+
+// const elem = document.querySelector('.examples__name-wrap');
+// const hammertime = new Hammer(elem, {
+//     recognizers: [
+//         [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
+//     ]
+// });
+// hammertime.on('swipe', function (ev) {
+//     console.log(ev);
+// });
+//
+// hammertime.get('swipe').set({derection: Hammer.DIRECTION_HORIZONTAL});
 
 window.onload = function () {
     init();

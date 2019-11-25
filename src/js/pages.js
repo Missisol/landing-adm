@@ -105,7 +105,7 @@ function initPages() {
         makeAdvantagesPage(e.target);
         getAdvantagesText(e.target);
     });
-    
+
     const exTexts = document.querySelector('.examples__name-wrap');
     exTexts.addEventListener('click', (e) => {
         makeExamplesPage(e.target);

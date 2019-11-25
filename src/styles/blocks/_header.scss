@@ -24,13 +24,13 @@
 
   &__fixed {
 
-    @include tablet {
-      background: $green;
-    }
-
-    @include phone {
-      background: $green;
-    }
+    //@include tablet {
+    //  background: $green;
+    //}
+    //
+    //@include phone {
+    //  background: $green;
+    //}
   }
 
   &__header__animated {

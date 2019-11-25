@@ -107,13 +107,15 @@
 
   &__name-wrap {
     width: 100%;
+    user-select: none;
 
     @include phone {
-      height: 57px;
+      height: 30px;
       display: flex;
       min-width: auto;
       overflow-x: scroll;
       white-space: nowrap;
+      padding-bottom: 6px;
     }
   }
 
@@ -127,8 +129,7 @@
       font-size: 16px;
       line-height: 24px;
 
-      margin-left: 10vw;
-      padding-bottom: 8px;
+      //margin-left: 10vw;
       border-bottom: 1px solid transparent;
       transition: color .2s linear;
     }

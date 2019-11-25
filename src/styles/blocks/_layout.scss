@@ -133,6 +133,15 @@
       height: 2px;
       width: 100%;
       background-color: $white;
+
+      @include tablet {
+        bottom: -7px;
+      }
+
+      @include phone {
+        bottom: -3px;
+        height: 1px;
+      }
     }
   }
 
@@ -143,6 +152,14 @@
   &__open-rotate {
     @include desktop {
       animation: open-rotate 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+      .main__button {
+        &:hover {
+          color: $black;
+          background: $yellow;
+          border: 1px solid $yellow;
+        }
+      }
     }
   }
 

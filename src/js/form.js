@@ -142,7 +142,7 @@ class SubmitForm {
             body: JSON.stringify(this.formValue)
         })
             .then(res => {
-                if (res.status === 200) {
+                if (res.status === 201) {
                     this.accept();
                 }
             })
