@@ -15,7 +15,10 @@
     padding-top: 96px;
   }
 
-  &__button {
-    @include button;
+  &__title {
+
+    @include phone {
+      margin-bottom: 16px;
+    }
   }
 }
