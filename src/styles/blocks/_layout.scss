@@ -20,6 +20,7 @@
 
   @include phone {
     background: $green;
+    padding-bottom: 69px;
   }
 
   &__content {
@@ -32,7 +33,7 @@
     }
 
     @include phone {
-      margin-bottom: 24px;
+      //margin-bottom: 24px;
     }
   }
 
@@ -117,6 +118,22 @@
         height: 1px;
       }
     }
+  }
+
+  &__num-page {
+    margin: 0 16px;
+    width: 50px;
+
+    @include phone {
+      width: 30px;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+  }
+
+  &__name {
 
     &:hover:after {
       width: 100%;
@@ -136,7 +153,6 @@
       display: block;
       content: '';
       height: 2px;
-      width: 100%;
       background-color: $white;
 
       @include tablet {
@@ -151,8 +167,22 @@
     }
   }
 
-  &__num-page {
-    width: 50px;
+  &__num-page_active {
+
+    &:after {
+      width: 100%;
+    }
+  }
+
+  &__name_active {
+
+    &:after {
+      width: 100%;
+
+      @include phone {
+        width: calc(100% - 6vw);
+      }
+    }
   }
 
   &__open-rotate {
