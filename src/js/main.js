@@ -142,8 +142,8 @@ function initSmoothScrolling() {
             $('body, html').animate({
                 scrollTop: top
             }, 600, function () {
-                    checkVisibilityFeedbackPage();
-                    getPaginationActiveItem(link);
+                checkVisibilityFeedbackPage();
+                getPaginationActiveItem(link);
             });
         }, 800)
     })
@@ -192,6 +192,18 @@ function initSmoothScrollingOnePage(e) {
     }
 }
 
+function debounce(fn, interval) {
+    let timer;
+    return function debounced() {
+        clearTimeout(timer);
+        let args = arguments;
+        let that = this;
+        timer = setTimeout(function initSmoothScrollingOnePage(e) {
+            fn.apply(that, args);
+        }, interval);
+    };
+}
+
 /* Инициирует обработчики событий*/
 function init() {
     const open = document.querySelector('#open');
@@ -224,8 +236,10 @@ function init() {
         })
     }
 
+    let delayScroll = debounce(initSmoothScrollingOnePage, 500);
+
     document.body.addEventListener('wheel', (e) => {
-        initSmoothScrollingOnePage(e);
+        delayScroll(e);
     })
 }
 
